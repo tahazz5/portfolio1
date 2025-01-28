@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaEnvelope, FaDownload, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaDownload, FaGithub, FaMoon, FaSun } from "react-icons/fa";
 import "./App.css";
 
 const projects = [
@@ -27,17 +27,26 @@ const projects = [
 ];
 
 export default function App() {
+  const [darkMode, setDarkMode] = useState(localStorage.getItem("theme") === "dark");
+
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
   return (
-    <div className="container">
-      {/* Navigation Menu */}
+    <div className={`container ${darkMode ? "dark-mode" : ""}`}>
+      {/* Dark Mode Toggle */}
+      <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
+        {darkMode ? <FaSun /> : <FaMoon />}
+      </button>
+
       <nav className="navbar">
-        <div>
-          Omar Oukhtite
-        </div>
+        <div>Omar Oukhtite</div>
         <ul className="menu">
           <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -45,7 +54,7 @@ export default function App() {
       {/* Header Section */}
       <section id="about" className="header">
         <motion.img
-          src="/profile.jpg" // Chemin vers l'image
+          src="/profile.jpg"
           alt="Omar OUKHTITE"
           className="profile-image"
           initial={{ opacity: 0, y: -20 }}
@@ -66,7 +75,8 @@ export default function App() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          AI & Data Science Enthusiast | ENSIMAG Student
+          AI & Data Science Enthusiast | Grenoble INP - ENSIMAG Student <br />
+          Currently pursuing a Master's degree in Computer Science and Applied Mathematics at ENSIMAG, with a specialization in Mathematical Modeling, Image, and Simulation. Experienced in software development, data science, and artificial intelligence projects.
         </motion.p>
         <motion.a
           href="/cv_english.pdf"
@@ -77,6 +87,36 @@ export default function App() {
         >
           <FaDownload className="icon" /> Download CV
         </motion.a>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="skills">
+        <h2 className="section-title">Skills</h2>
+        <div className="skills-grid">
+          {[
+            { name: "Mathematics", icon: "📐" },
+            { name: "Machine Learning", icon: "🤖" },
+            { name: "Deep Learning", icon: "🧠" },
+            { name: "Python", icon: "🐍" },
+            { name: "Java", icon: "☕" },
+            { name: "SQL", icon: "📊" },
+            { name: "C/C++", icon: "🔧" },
+            { name: "Data Science", icon: "📉" },
+          ].map((skill, index) => (
+            <motion.div
+              key={index}
+              className="skill-card"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <span className="skill-icon">{skill.icon}</span>
+              <p className="skill-name">{skill.name}</p>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* Projects Section */}
@@ -99,29 +139,33 @@ export default function App() {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="experience">
-        <h2 className="section-title">Experience</h2>
-        <p className="experience-content">
-          Currently pursuing a Master's degree in Computer Science and Applied Mathematics at ENSIMAG, with a specialization in Mathematical Modeling, Image, and Simulation. Experienced in software development, data science, and artificial intelligence projects.
-        </p>
-      </section>
-
       {/* Contact Section */}
-      <section id="contact" className="contact">
-        <h2 className="section-title">Contact</h2>
-        <div className="contact-icons">
-          <a href="https://www.linkedin.com/in/omar-oukhtite-144212243/" className="icon-link">
-            <FaLinkedin className="icon" />
-          </a>
-          <a href="mailto:omar.oukhtite@grenoble-inp.org" className="icon-link">
-            <FaEnvelope className="icon" />
-          </a>
-          <a href="https://github.com/OmarOukhtite" className="icon-link">
-            <FaGithub className="icon" />
-          </a>
-        </div>
-      </section>
+<section id="contact" className="contact">
+  <h2 className="section-title">Contact Us</h2>
+  <p>If you have any questions or inquiries, feel free to reach out to us.</p>
+
+  {/* Contact Icons */}
+  <div className="contact-icons">
+    <a href="https://www.linkedin.com/in/omar-oukhtite-144212243/" className="icon-link" target="_blank" rel="noopener noreferrer">
+      <FaLinkedin className="icon" />
+    </a>
+    <a href="mailto:omar.oukhtite@grenoble-inp.org" className="icon-link">
+      <FaEnvelope className="icon" />
+    </a>
+    <a href="https://github.com/OmarOukhtite" className="icon-link" target="_blank" rel="noopener noreferrer">
+      <FaGithub className="icon" />
+    </a>
+  </div>
+
+  {/* Contact Form */}
+  <form action="https://formspree.io/f/xxxxx" method="POST" className="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
     </div>
   );
 }
