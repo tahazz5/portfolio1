@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 /* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #f4f4f4;
+  color: #333;
   text-align: center;
 }
 
@@ -12,6 +14,67 @@ body {
   width: 80%;
   margin: auto;
   padding: 20px;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  display: inline-block;
+  color: #333;
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: all 0.3s;
+  background: linear-gradient(45deg, #e0e0e0, #f4f4f4);
+}
+
+.navbar a:hover {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
+  transform: scale(1.1);
+}
+
+.navbar div {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Great Vibes', cursive; /* Police élégante */
+  color: #7D3C98; /* Un violet élégant */
+  margin-left: start; /* Pousse le texte vers la droite */
+  padding-right: 20px;
+}
+
+.active {
+  color: #007bff;
+  border-bottom: 3px solid #007bff;
 }
 
 /* Header Section */
@@ -26,17 +89,17 @@ body {
 
 .subtitle {
   font-size: 1.2rem;
-  color: #bbb;
+  color: #666;
 }
 
 .download-btn {
   display: inline-block;
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #007bff;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: bold;
   transition: background 0.3s;
 }
@@ -58,16 +121,16 @@ body {
 .project-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 20px;
 }
 
 .project-card {
-  background-color: #1e1e1e;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   width: 300px;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
 
@@ -87,7 +150,7 @@ body {
 
 .project-date {
   font-size: 0.9rem;
-  color: #bbb;
+  color: #666;
 }
 
 /* Contact Section */
@@ -103,12 +166,13 @@ body {
 
 .icon-link {
   font-size: 2rem;
-  color: white;
+  color: #333;
   transition: transform 0.3s;
 }
 
 .icon-link:hover {
   transform: scale(1.2);
+  color: #007bff;
 }
 
 .profile-image {

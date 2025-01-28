@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaDownload, FaGithub } from "react-icons/fa";
 import "./App.css";
 
 const projects = [
@@ -29,8 +29,21 @@ const projects = [
 export default function App() {
   return (
     <div className="container">
+      {/* Navigation Menu */}
+      <nav className="navbar">
+        <div>
+          Omar Oukhtite
+        </div>
+        <ul className="menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
       {/* Header Section */}
-      <section className="header">
+      <section id="about" className="header">
         <motion.img
           src="/profile.jpg" // Chemin vers l'image
           alt="Omar OUKHTITE"
@@ -67,7 +80,7 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section className="projects">
+      <section id="projects" className="projects">
         <h2 className="section-title">Projects</h2>
         <div className="project-grid">
           {projects.map((project, index) => (
@@ -86,8 +99,16 @@ export default function App() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <section id="experience" className="experience">
+        <h2 className="section-title">Experience</h2>
+        <p className="experience-content">
+          Currently pursuing a Master's degree in Computer Science and Applied Mathematics at ENSIMAG, with a specialization in Mathematical Modeling, Image, and Simulation. Experienced in software development, data science, and artificial intelligence projects.
+        </p>
+      </section>
+
       {/* Contact Section */}
-      <section className="contact">
+      <section id="contact" className="contact">
         <h2 className="section-title">Contact</h2>
         <div className="contact-icons">
           <a href="https://www.linkedin.com/in/omar-oukhtite-144212243/" className="icon-link">
@@ -95,6 +116,9 @@ export default function App() {
           </a>
           <a href="mailto:omar.oukhtite@grenoble-inp.org" className="icon-link">
             <FaEnvelope className="icon" />
+          </a>
+          <a href="https://github.com/OmarOukhtite" className="icon-link">
+            <FaGithub className="icon" />
           </a>
         </div>
       </section>
